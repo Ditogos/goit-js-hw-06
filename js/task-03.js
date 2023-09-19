@@ -14,15 +14,16 @@ const images = [
 ];
 
 const imageGallery = document.querySelector(".gallery");
-images.forEach((image) => {
-  const listGallery = document.createElement("li");
-  const imgList = document.createElement("img");
-  imgList.src = image.url;
-  imgList.alt = image.alt;
-  listGallery.appendChild(imgList);
-  imageGallery.appendChild(listGallery);
-  listGallery.insertAdjacentHTML("afterbegin", image);
-});
+const imageStroke = images
+  .map(
+    (image) =>
+      `<li style="list-style: none;">
+    <img src="${image.url}" alt="${image.alt}" style="margin-right: 5px;">
+  </li>
+`
+  )
+  .join("");
+imageGallery.innerHTML = imageStroke;
 
 const imageStyles = document.querySelector(".gallery");
 imageStyles.style.listStyle = "none";

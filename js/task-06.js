@@ -1,12 +1,18 @@
 const colorInput = document.getElementById("validation-input");
-const setInputData = document.querySelector('[data-length= "6"]');
 
-colorInput.addEventListener("blur", () => {
-  if (colorInput.value.length === Number(setInputData.dataset.length)) {
-    colorInput.classList.add("valid");
+function getValid(valid, invalid) {
+  valid = colorInput.value;
+  invalid = Number(colorInput.dataset.length);
+  if (valid.length === invalid) {
     colorInput.classList.remove("invalid");
+    colorInput.classList.add("valid");
+    // colorInput.addEventListener("input", getValid);
   } else {
-    colorInput.classList.add("invalid");
+    // function getInvalid(a, b)
+    //   a = valid;
+    //   b = invalid;
     colorInput.classList.remove("valid");
+    colorInput.classList.add("invalid");
   }
-});
+}
+colorInput.addEventListener("input", getValid);
